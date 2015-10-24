@@ -1,0 +1,73 @@
+<ion-view view-title="Doctors List">
+
+  <ion-nav-buttons side="primary">
+    <button 
+      class="button button-icon ion-minus-circled"
+      ng-click="data.showDelete = !data.showDelete; data.showReorder = false;">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="secondary">
+    <button 
+      class="button button-icon ion-navicon"
+      ng-click="data.showReorder = !data.showReorder; data.showDelete = false;">
+    </button>
+  </ion-nav-buttons>
+
+
+<div class="bar bar-subheader 
+  item-input-inset bar-light">
+  
+
+  <label class="item-input-wrapper">
+
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" ng-model="query" placeholder="Search">
+  </label>
+</div>
+<ion-content 
+  class="has-subheader">
+  <ion-refresher on-refresh="doRefresh()">
+  </ion-refresher>
+   
+  <ion-list 
+    show-delete="data.showDelete"
+    show-reorder="data.showReorder">
+    <ion-item ng-class="{'star': item.star}" 
+    ng-repeat='item in doctors | filter: query'
+    class="item-thumbnail-left item-icon-right
+      item-text-wrap" href="#app/search/{{item.Doctor_Id}}/{{item.Doctors_Name}}/{{item.Working_Schedule[0].Location.Latitude}}/{{item.Working_Schedule[0].Location.Longitude}}"> 
+
+  
+       <img  ng-src="{{item.IUrl}}"
+        alt="{{ item.name }} Photo">
+       
+        <h2>{{item.Doctors_Name}}</h2>
+
+      
+
+         <h3>{{item.Accolode}}</h3>
+<div>
+          <i class="item item-avatar item-top-right"> <img ng-src="img/{{item.Speciality}}.png"></i>
+      <p>{{item.Accolode | limitTo: 100}}
+
+      {{ item.Accolode.length > 150 ? '&hellip;' : '' }}</p>
+
+</div>
+  
+      <button class="button button-clear icon ion-star button-assertive"
+        ng-click="toggleStar(item)"
+        ng-show="item.star"></button>
+      <ion-option-button class="button-dark"
+        ng-click="toggleStar(item)">
+        <i class="icon ion-star"></i>
+      </ion-option-button>
+      <ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)">
+      </ion-delete-button>
+      <ion-reorder-button class="ion-navicon"
+        on-reorder="moveItem(item, $fromIndex, $toIndex)">
+      </ion-reorder-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+</ion-view>

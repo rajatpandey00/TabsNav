@@ -1,0 +1,78 @@
+
+<ion-view view-title="Profile">
+  <ion-nav-back-button>
+      </ion-nav-back-button>
+     <ion-tabs class="tabs-icon-top tabs-positive">
+
+        <ion-tab icon="ion-home" href="#/search/:Doctor_Id/:ashortname/:Latitude/:Longitude">
+            
+          <ion-nav-view >
+           <ion-content  title="Profile" icon-on="ion-ios7-location" icon-off="ion-ios7-location-outline" ng-controller="ProfileCtrl">
+       
+         <ion-view>
+            <div id="content">
+             <div id="profile-info">
+              <img id="profile-image" ng-src="{{img}}">
+              <h3 id="profile-name">{{doctorname}}</h3>
+           
+          <h3>{{clinic}}</h3><a class="ion ion-navigate" href="#"></a>	
+        </div>
+
+        
+        </ion-list>
+      </div>
+      <div class="list-item-content"><h3>Address:</h3> {{address}} <br>
+          
+      <h3>City :</h3>{{city}} <br>
+      
+     <!--  <div id="grid1" ui-grid="{ data: myData }" class="grid"></div> -->
+    <ion-list>
+    <h3> Working Schedule :</h3> 
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+       
+      </ion-list>
+      <h3> Specialization:</h3> <img id="thumbnail-image" src="img/{{speciality}}.png">
+      <h3> Contact :</h3><a  class="item item-icon-right" href="#">{{phonenumber}} <i class="icon ion-ios-telephone-outline" ></i></a>
+      <h3> Email :</h3><a  class="item item-icon-right" href="#">{{email}}<i class="icon ion-ios-email-outline" ></i></a><br>
+
+      </div>
+     </ion-view>
+    </ion-content>
+</ion-nav-view>
+     </ion-tab>
+
+        <ion-tab title="About" icon="ion-ios7-information" href="#/tab/about">
+          <ion-nav-view>
+          <ion-content tile="About" ng-controller="AboutCtrl">
+              <h1>About</h1>{{Name}}
+            </ion-content>
+          </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Contact" icon="ion-ios7-world" href="#/tab/contact">
+          <ion-nav-view >
+
+          <ion-content title="Contact">
+          <p>@IonicFramework</p>
+          <p>@DriftyCo</p>
+        </ion-content>
+     
+          </ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>
+
+</ion-view>

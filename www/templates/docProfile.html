@@ -1,0 +1,142 @@
+
+ <ion-view >
+     
+   <ion-nav-back-button></ion-nav-back-button>
+     
+    <ion-tabs class="tabs-icon-top tabs-background-calm tabs-color-light">
+
+       <ion-tab icon-on="ion-ios-home" icon-off="ion-ios-home-outline">
+            
+         <!--    <ion-nav-view >
+           <ion-content  title="Profile" icon-on="ion-ios7-location" icon-off="ion-ios7-location-outline" ng-controller="ProfileCtrl">
+       
+         <ion-view>
+            <div>
+            
+              <img  ng-src="{{img}}">
+              <h3 id="profile-name">{{doctorname}}</h3>
+           
+          <h3>{{clinic}}</h3><a class="ion ion-navigate" href="#"></a>  
+           </div>
+
+        
+        </ion-list>
+     
+      <div class="list-item-content"><h3>Address:</h3> {{address}} <br>
+          
+      <h3>City :</h3>{{city}} <br>
+      
+     <!--  <div id="grid1" ui-grid="{ data: myData }" class="grid"></div> -->
+   <!--  <ion-list>
+    <h3> Working Schedule :</h3> 
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+       
+      </ion-list>
+      <h3> Specialization:</h3> <img id="thumbnail-image" src="img/{{speciality}}.png">
+      <h3> Contact :</h3><a  class="item item-icon-right" href="#">{{phonenumber}} <i class="icon ion-ios-telephone-outline" ></i></a>
+      <h3> Email :</h3><a  class="item item-icon-right" href="#">{{email}}<i class="icon ion-ios-email-outline" ></i></a><br>
+
+      </div>
+     </ion-view>
+    </ion-content>
+</ion-nav-view> --> 
+
+      <ion-nav-view>
+          <ion-content title="Profile" >
+              <div id="content">
+
+                <div id="profile-info">
+
+              <img id="profile-image" ng-src="{{img}}">
+
+              <h3 id="profile-name">{{doctorname}}</h3>
+           
+              <h3>{{clinic}}</h3>  
+             </div>   
+
+      <ion-list class="list-item">
+         <h3> Working Schedule :</h3> 
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}" >
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+       
+      </ion-list>
+ 
+      <h3> Specialization:</h3> <img id="thumbnail-image" src="img/{{speciality}}.png">
+      <h3> Contact :</h3><a  class="item item-icon-right" href="#">{{phonenumber}} <i class="icon ion-ios-telephone-outline" ></i></a>
+      <h3> Email :</h3><a  class="item item-icon-right" href="#">{{email}}<i class="icon ion-ios-email-outline" ></i></a><br>
+      </div>
+      </ion-content>
+     </ion-nav-view>
+
+     </ion-tab>
+
+
+
+     <ion-tab title="Directions" icon-on="ion-ios-location" icon-off="ion-ios-location-outline" >
+          <ion-nav-view>
+          <ion-content class="padding" ng-controller="SearchCtrl">
+      <h3>{{Doctors_Name}}</h3> 
+        
+         <div id="directions-panel" class="panel"></div>
+
+         <div id="heading"></div>
+         <div id="geolocation"></div>
+
+         <div id="map" data-tap-disabled="true"></div>
+
+          </ion-content>
+
+          </ion-nav-view>
+        </ion-tab>
+
+        <ion-tab title="Book Appointment" icon-on="ion-ios-chatboxes" icon-off="ion-ios-chatboxes-outline">
+          <ion-nav-view >
+
+          <ion-content class="padding" title="Choose a Meeting Type" ng-init="types=[{name:'Chat',des:'Whatsapp like Chat',charge:'50'},{name:'Call',des:'Audio Call',charge:'150'},{name:'Video Call',des:'Meet via Video Conference',charge:'200'}]">
+
+          <ion-list ng-repeat="type in types" >
+
+            <ion-item class="item" href="#">
+            <div class="item item-avatar item-stable" >
+            <img src="img/{{type.name}}.png">
+            <h2>Instant {{type.name}}</h2>
+            <p>{{type.des}}</p>
+            <p>Rs. {{type.charge}} Extra</p>
+            </div>
+            </ion-item>
+
+          </ion-list>
+          
+          </ion-content>
+     
+          </ion-nav-view>
+        </ion-tab>
+
+      </ion-tabs>     
+
+</ion-view>
